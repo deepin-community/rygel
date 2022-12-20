@@ -1,0 +1,1114 @@
+rygel (0.40.3-deepin1) unstable; urgency=medium
+
+  * Rebuild
+
+ -- Deepin Packages Builder <packages@deepin.org>  Fri, 11 Nov 2022 18:05:19 +0800
+
+rygel (0.40.3-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/control.in.: Bump minimum meson to 0.55.0
+
+ -- Jeremy Bicha <jbicha@debian.org>  Sun, 16 Jan 2022 16:28:27 -0500
+
+rygel (0.40.2-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bicha <jbicha@debian.org>  Fri, 24 Sep 2021 18:11:22 -0400
+
+rygel (0.40.1-3) unstable; urgency=medium
+
+  * Build-Depend on dh-sequence-gnome
+  * debian/rules: Simplify a bit
+  * Bump debhelper-compat to 13
+  * Release to unstable
+
+ -- Jeremy Bicha <jbicha@debian.org>  Tue, 31 Aug 2021 20:45:51 -0400
+
+rygel (0.40.1-2) experimental; urgency=medium
+
+  * control, rules, rygel-tracker.install: Switch to tracker 3
+
+ -- Iain Lane <laney@debian.org>  Thu, 24 Jun 2021 18:20:53 +0100
+
+rygel (0.40.1-1) experimental; urgency=medium
+
+  * New upstream release
+  * d/p/wip-Fix-gtkdoc-generation-and-installation.patch:
+    - remove patch included in the new version
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 08 Jun 2021 20:40:47 +0200
+
+rygel (0.40.0-1) unstable; urgency=medium
+
+  [ Sebastien Bacher ]
+  * debian/control.in, debian/rules:
+    - generate the gstreamer plugin recommends/suggests dynamically
+      depending on the distribution, allows Ubuntu syncing
+
+  [ Laurent Bigonville ]
+  * New upstream release
+  * Bump build-dependencies and switch to meson
+  * debian/control.in: Add several missing dependencies to the -dev package
+  * debian/control.in: Add libglib2.0-doc to the build-dependencies
+  * debian/control.in: Bump Standards-Version to 4.5.1 (no further changes)
+  * Fix installation of the documentation, patch from upstream
+  * Move mx-extract to /usr/libexec/rygel
+
+ -- Laurent Bigonville <bigon@debian.org>  Tue, 22 Dec 2020 09:22:22 +0100
+
+rygel (0.38.3-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 11 Mar 2020 15:37:18 +0100
+
+rygel (0.38.2-4) unstable; urgency=medium
+
+  * debian/rygel-2.6-dev.install: install the documentation again, it's
+    shipped correctly with the new tarball version
+  * debian/control.in: Bump Standards-Version to 4.4.1 (no further changes)
+
+ -- Laurent Bigonville <bigon@debian.org>  Tue, 31 Dec 2019 13:03:41 +0100
+
+rygel (0.38.2-3) unstable; urgency=medium
+
+  * debian/control.in:
+    - correctly version the dev binary libgupnp depends
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 05 Nov 2019 16:37:25 +0100
+
+rygel (0.38.2-2) unstable; urgency=medium
+
+  * debian/rygel.postinst:
+    - disable the systemd user units on upgrade for users who had the buggy
+      version installed, --no-enable isn't enough for those cases.
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 28 Oct 2019 19:01:37 +0100
+
+rygel (0.38.2-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #917464)
+  * debian/patches/gstreamer_use_lm.patch:
+    - remove, the bug is fixed in the new version
+  * debian/rules:
+    - use 'dh_installsystemduser --no-enable' to not risk enabling media
+      sharing for users who don't expect it. GNOME defaults to disable
+      rygel on login but that's not the case in other desktops, since that
+      can be a privacy issue it's better to default to a safe behaviour.
+      (lp: #1848692)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 24 Oct 2019 22:09:07 +0200
+
+rygel (0.38.1-1) experimental; urgency=medium
+
+  * New upstream release
+  * debian/compat:
+    - removed
+  * debian/control.in:
+    - updated Build-Depends on glib/gtk/gssdp/gupnp/gstreamer/vala
+    - update to debhelper12
+  * debian/patches/renderer-Fix-type-argument-mismatch.patch:
+    - remove, included in the new version
+  * debian/patches/gstreamer_use_lm.patch:
+    - fix a build issue with autotools
+  * debian/rygel-2.6-dev.install:
+    - temporarly comment installation of documentation missing from the
+      current version tarball
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 23 Aug 2019 11:27:56 +0300
+
+rygel (0.36.2-5) experimental; urgency=medium
+
+  * Cherry-pick renderer-Fix-type-argument-mismatch.patch:
+    - Fix build with vala 0.44 series
+  * Upload to experimental because of the Buster Full Freeze
+
+ -- Jeremy Bicha <jbicha@debian.org>  Wed, 06 Mar 2019 02:39:48 -0500
+
+rygel (0.36.2-4) unstable; urgency=medium
+
+  * debian/control.in; debian/*.install, debian/rules:
+    - update the debian packaging to multi-arch the libraries as well as
+      the plugins
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 13 Feb 2019 15:32:47 +0100
+
+rygel (0.36.2-3) unstable; urgency=medium
+
+  * Add -Wl,-O1 to our LDFLAGS
+  * Bump Standards-Version to 4.3.0
+
+ -- Jeremy Bicha <jbicha@debian.org>  Thu, 27 Dec 2018 11:53:06 -0500
+
+rygel (0.36.2-2) unstable; urgency=medium
+
+  * Some tweaks following the Ubuntu MIR reviews (lp: #1786489)
+  * debian/copyright: updated the list of copyright owners
+  * debian/rygel.triggers: use noawait triggers
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 03 Dec 2018 16:36:28 +0100
+
+rygel (0.36.2-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #907931)
+  * Bump libgssdp-1.0-dev to >= 0.14.15
+  * debian/docs: README is not included in this release
+  * Add X-Ubuntu-Use-Langpack to opt in to Ubuntu language pack handling
+    (LP: #1779574)
+  * Bump Standards-Version to 4.2.1
+
+ -- Jeremy Bicha <jbicha@debian.org>  Sat, 08 Sep 2018 18:56:28 -0400
+
+rygel (0.36.1-1) unstable; urgency=medium
+
+  * New upstream release
+  * Update Vcs fields for migration to https://salsa.debian.org/
+  * Bump debhelper compat to 11
+
+ -- Jeremy Bicha <jbicha@debian.org>  Sun, 11 Mar 2018 23:26:48 -0400
+
+rygel (0.36.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Drop all patches, applied in new release
+  * Update Vcs fields and debian/watch
+  * Bump Standards-Version to 4.1.1
+
+ -- Jeremy Bicha <jbicha@debian.org>  Fri, 17 Nov 2017 17:45:33 -0500
+
+rygel (0.32.1-5) unstable; urgency=medium
+
+  [ Andreas Henriksson ]
+  * Fix rygel.trigger to be interested in correct plugin path
+
+  [ Jeremy Bicha ]
+  * Add 002-fix-build-with-vala36.patch (Closes: #873867)
+  * Add 003-build-with-tracker2.patch
+  * debian/control.in:
+    - Build-Depends on libtracker-sparql-2.0-dev instead of 1.0
+  * Bump Standards-Version to 4.1.0
+
+ -- Jeremy Bicha <jbicha@debian.org>  Wed, 13 Sep 2017 17:27:52 -0400
+
+rygel (0.32.1-3) unstable; urgency=medium
+
+  * rygel-2.6-dev: add missing dependency on librygel-ruih-2.0-1.
+    Closes: #857416.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Sat, 11 Mar 2017 16:39:13 +0100
+
+rygel (0.32.1-2) unstable; urgency=medium
+
+  * Disable rygel-media-engine-test, as it fails randomly, making the
+    package to FTBFS. Patch from Santiago Vila. Closes: #841098.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Thu, 26 Jan 2017 17:46:17 +0100
+
+rygel (0.32.1-1) unstable; urgency=medium
+
+  * Drop obsolete transitional package (Closes: #841098)
+  * Drop explicitly disabling silent build
+  * Bump to dh compat 10
+  * Use fail-missing to detect shipping mistakes
+  * New upstream release.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 18 Oct 2016 09:21:52 +0200
+
+rygel (0.32.0-2) unstable; urgency=medium
+
+  * Fix rygel system service examples install path
+  * rygel: Recommend dbus-user-session for shipped systemd --user unit
+    (Closes: #838769)
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 04 Oct 2016 16:36:07 +0200
+
+rygel (0.32.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop rygel-mediathek plugin/package
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 22 Sep 2016 20:19:20 +0200
+
+rygel (0.30.3-1) unstable; urgency=medium
+
+  [ Laurent Bigonville ]
+  * New upstream release.
+    - Adjust the build-dependencies
+    - Drop d/p/gst-launch-engine-gst-link-to-libsoup.patch, applied upstream
+  * Install the systemd user unit files
+  * Pass --as-needed to dh_autoreconf to minimize the runtime dependencies
+  * debian/rules: Enable full hardening (hardening=+all)
+
+  [ Andreas Henriksson ]
+  * Disable LightMediaScanner (LMS) plugin for now
+  * Remove *.la files to avoid clutter in missing files output
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 08 Jul 2016 12:02:14 +0200
+
+rygel (0.28.3-2) unstable; urgency=medium
+
+  [ Michael Biebl ]
+  * Drop uploaders.mk from debian/rules. This breaks the clean target with dh.
+    Instead use the gnome dh addon which updates debian/control via
+    dh_gnome_clean.
+  * Use DEB_LDFLAGS_MAINT_APPEND to set additional LDFLAGS which is the
+    preferred way with debhelper 9.
+
+  [ Laurent Bigonville ]
+  * debian/control.in: Drop the recommends against gnome-icon-theme-symbolic
+  * Drop -dbg package and rely on the automatically -dbgsym ones
+  * debian/control.in: Bump Standards-Version to 3.9.8 (no further changes)
+  * debian/rules: Explicitly pass --libdir=/usr/lib to the configure
+
+ -- Laurent Bigonville <bigon@debian.org>  Sun, 05 Jun 2016 17:19:31 +0200
+
+rygel (0.28.3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Add debian/patches/gst-launch-engine-gst-link-to-libsoup.patch
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 09 Mar 2016 18:21:44 +0100
+
+rygel (0.28.2-2) unstable; urgency=medium
+
+  * debian/copyright: Bump year for my involvement.
+  * Hand over maintenance to Debian GNOME Team
+    - build-depend on gnome-pkg-tools
+    - include uploaders.mk and gnome-get-source.mk in debian/rules
+    - copy debian/control to debian/control.in
+    - set Maintainer to Debian GNOME Team and Uploaders to autogenerated.
+    - update Vcs-* fields for move from collab-maint to pkg-gnome
+  * Bump Standards-Version to 3.9.7
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 09 Mar 2016 18:07:46 +0100
+
+rygel (0.28.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update debian/copyright for logo relicensing (CC-BY-SA 3.0)
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 12 Feb 2016 21:16:49 +0100
+
+rygel (0.28.1-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.28.1
+    - data: Do not distribute scalable icons in tarball (Closes: #800896)
+  * Drop debian/patches/*, now part of upstream release.
+  * debian/gbp.conf: update section headers to avoid warning
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 17 Oct 2015 22:45:43 +0200
+
+rygel (0.28.0-2) unstable; urgency=medium
+
+  * Add debian/patches/git_media-export-fix-db-upgrade-16-17.patch
+    - fixes database upgrades
+  * Add debian/patches/git_media-export-fix-install-path-mx-extract.patch
+    - fixes inconsistency related to mx-extract helper path (Closes: #801521)
+  * debian/rules: add --disable-silent-rules configure flag.
+
+  Thanks to Roderich Schupp (and upstreams Jens Georg) for these fixes.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 11 Oct 2015 20:58:00 +0200
+
+rygel (0.28.0-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.28.0
+  * Update build-dependencies according to configure.ac changes:
+    - bump glib2.0 to >= 2.40.0
+    - bump vala to >= 0.24.0
+    - bump gupnp to >= 0.20.14
+    - drop uuid-dev
+  * Add new librygel-db-2.6-2 package
+  * rygel: Ship mx-extract helper for media-export plugin
+    - also add libexecdir configure flag.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 24 Sep 2015 14:03:12 +0200
+
+rygel (0.26.1-3) unstable; urgency=medium
+
+  * Update rygel plugin ABI version for dh_makeshlibs call
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 08 Jun 2015 08:58:02 +0200
+
+rygel (0.26.1-2) unstable; urgency=medium
+
+  * rygel-2.6-dev: Add Conflicts/Replaces rygel-2.4-dev (Closes: #787907)
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 08 Jun 2015 08:11:33 +0200
+
+rygel (0.26.1-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.26.1
+  * Revert "Cherry-pick upstream commit 9f8a6b37bcf4"
+  * Revert "Cherry-pick upstream commit 8439db10f8"
+    - both now part of upstream release.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 25 May 2015 18:05:48 +0200
+
+rygel (0.26.0-1) experimental; urgency=medium
+
+  * Imported Upstream version 0.26.0
+  * Rename librygel-* for new plugin abi version
+  * Switch to libmediaart-2.0 (Closes: #784676)
+  * Add new librygel-ruih-2.0 package
+  * Add new rygel-ruih plugin package
+  * Cherry-pick upstream commit 8439db10f8
+    "build: Fix librygel-ruih linking"
+  * Cherry-pick upstream commit 9f8a6b37bcf4
+    "build: Use correct pkg-config for libxml2"
+  * Upload to experimental because of libmediaart-2.0 build-dep
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 10 May 2015 00:41:15 +0200
+
+rygel (0.24.2-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.24.2
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 06 Dec 2014 18:57:04 +0100
+
+rygel (0.24.1-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.24.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 22 Oct 2014 15:42:48 +0200
+
+rygel (0.24.0-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.24.0
+  * Run wrap-and-sort
+  * Update build-dependencies according to configure.ac changes
+    + Add gobject-introspection
+    + Add libgstreamer-plugins-base1.0-dev (>= 1.0)
+    + Add libmediaart-1.0-dev (>= 0.5.0)
+  * Rename package to match new API/ABI version
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 23 Sep 2014 00:43:13 +0200
+
+rygel (0.22.3-1) unstable; urgency=medium
+
+  * Add debian/gbp.conf
+  * Imported Upstream version 0.22.3
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 16 Aug 2014 14:22:17 +0200
+
+rygel (0.22.2-2) unstable; urgency=medium
+
+  * debian/rules: stop ignoring testsuite failures on kFreeBSD.
+    - the kfreebsd binaries where finally removed.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 09 Jun 2014 08:25:36 +0200
+
+rygel (0.22.2-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.22.2
+  * Bump libsoup2.4-dev to >= 2.44.0 according to configure.ac changes
+  * Revert "Add debian/patches/debian/patches/fix-hurd-ftbfs.patch"
+    - The patch is now shipped in the new upstream release.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 02 Jun 2014 20:40:22 +0200
+
+rygel (0.22.1-3) unstable; urgency=medium
+
+  * Add debian/patches/debian/patches/fix-hurd-ftbfs.patch (Closes: #749098)
+    - backported upstream commit equal to what was originally
+      suggested by Gabriele Giacone to fix hurd ftbfs by bumping
+      test timeout limit.
+  * Fix spelling of recommended gnome-icon-theme-symbolic (Closes: #749753)
+  * Simplify valac build-dependency to use default valac
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 29 May 2014 22:48:39 +0200
+
+rygel (0.22.1-2) unstable; urgency=medium
+
+  [ Colin Watson ]
+  * Use dh-autoreconf for better new-port coverage (Closes: #742545)
+
+  [ Andreas Henriksson ]
+  * Recommend gnome-icon-theme-symbolic from rygel-preferences.
+    Thanks to Brian Sammon (Closes: #743831)
+  * Ship service file examples in rygel package (Closes: #748284)
+  * Update Homepage url to new location
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 16 May 2014 23:19:16 +0200
+
+rygel (0.22.1-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.22.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 10 May 2014 08:55:30 +0200
+
+rygel (0.21.5-1) experimental; urgency=medium
+
+  * Imported Upstream version 0.21.5
+  * Update build-dependency on tracker sparql to 1.0 (Closes: #741424)
+    - preserve 0.16 as alternative
+  * Make rygel-2.2-dev replace/conflict with rygel-2.0-dev as well
+    - API docs files clashes between old and new dev package (Closes: #739838)
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 12 Mar 2014 20:57:42 +0100
+
+rygel (0.21.4-1) experimental; urgency=medium
+
+  * Imported Upstream development version 0.21.4
+  * Bump valac, gupnp-av and libsoup build-dependencies
+  * Rename packages etc, for new plugin ABI version.
+  * Disable apidocs until Debian's valadoc supports vala 0.22
+  * Bump Standards-Version to 3.9.5
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 09 Feb 2014 02:48:25 +0100
+
+rygel (0.20.3-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.20.3
+  * Bump glib build-dependency to 2.34 according to configure.ac
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 17 Jan 2014 19:39:52 +0100
+
+rygel (0.20.1-1) unstable; urgency=low
+
+  * Imported Upstream version 0.20.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 17 Oct 2013 21:28:27 +0200
+
+rygel (0.20.0-1) unstable; urgency=low
+
+  * Imported Upstream version 0.20.0
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 24 Sep 2013 16:27:47 +0200
+
+rygel (0.19.7-1) experimental; urgency=low
+
+  * Imported Upstream version 0.19.7
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 17 Sep 2013 23:33:27 +0200
+
+rygel (0.19.6-1) experimental; urgency=low
+
+  * Imported Upstream version 0.19.6
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 03 Sep 2013 18:13:21 +0200
+
+rygel (0.19.5-1) experimental; urgency=low
+
+  [ Michael Biebl ]
+  * Drop tracker 0.14 build-dep alternative to transition to 0.16
+
+  [ Jeremy Bicha ]
+  * Drop unnecessary alternate build-depends on valac-0.20
+
+  [ Andreas Henriksson ]
+  * Imported Upstream version 0.19.5
+  * Update package descriptions to new improved version from upstream
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 21 Aug 2013 16:38:21 +0200
+
+rygel (0.19.4-1) experimental; urgency=low
+
+  * Make rygel-2.0-dev also depend on librygel-renderer-gst-2.0-1
+    (Closes: #715132)
+  * Imported Upstream version 0.19.4
+  * Bump valac build-dependency to >= 0.20 as required by new upstream release.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 31 Jul 2013 11:38:32 +0200
+
+rygel (0.19.3-1) experimental; urgency=low
+
+  [ Andreas Henriksson ]
+  * Use http instead of ftp in debian/watch for faster lookups
+  * Imported Upstream version 0.19.3
+
+  [ Jens Georg ]
+  * Install plugin support files
+
+  [ Andreas Henriksson ]
+  * Revert "patch rygel-preferences to properly restore configured interface"
+    - included in new upstream release.
+  * Bump libgtk-3-dev build-dependency to >= 3.0 according to configure.ac
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 23 Jun 2013 02:14:41 +0200
+
+rygel (0.18.2-2) unstable; urgency=high
+
+  * Add rygel recommends on gstreamer1.0-plugins-good
+  * Make test-suite failures non-fatal on kfreebsd
+    - kfreebsd is fubar, but noone seems to care....
+    - getting the old broken binary kfreebsd packages of rygel removed
+      seems like a challenge (see #711947), so just continue shipping
+      it broken for now to allow new versions to enter 'testing'.
+  * Upload with high urgency, the wait has been long enough already.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 23 Jun 2013 01:38:41 +0200
+
+rygel (0.18.2-1) unstable; urgency=low
+
+  * Imported Upstream version 0.18.2
+    - Includes "ui: Check that autostart file exists" (Closes: #703281)
+  * Revert "Add patch from upstream to work around vala bug causing ..."
+    - debian/patches/0001-engine-gst-Fix-obscure-test-failure.patch
+    - now included in upstream release.
+  * patch rygel-preferences to properly restore configured interface
+    - debian/patches/0001-ui-don-t-lose-the-interface-setting.patch
+    - see https://bugzilla.gnome.org/show_bug.cgi?id=700570
+  * Add alternative tracker-sparql 0.16 build-dependency
+  * Make rygel-playbin depend on gstreamer1.0-plugins-good.
+    Thanks to Jens Georg for finding and suggesting this.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 18 May 2013 17:08:27 +0200
+
+rygel (0.18.1-3) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 18 May 2013 02:46:50 +0200
+
+rygel (0.18.1-2) experimental; urgency=low
+
+  * Add patch from upstream to work around vala bug causing test failures
+    - debian/patches/0001-engine-gst-Fix-obscure-test-failure.patch
+  * Drop patch to revert hiding rygel-preferences
+    ... now that we have gnome-control-center 3.8 with integrated support
+        for configuring rygel.
+    - debian/patches/0001-Revert-data-Hide-rygel-preferences-in-GNOME.patch
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 29 Apr 2013 14:37:34 +0200
+
+rygel (0.18.1-1) experimental; urgency=low
+
+  * Imported Upstream version 0.18.1
+  * Revert "make tests non-fatal for now"
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 19 Apr 2013 15:33:54 +0200
+
+rygel (0.18.0-1) experimental; urgency=low
+
+  * Imported Upstream version 0.18.0
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 26 Mar 2013 20:37:48 +0100
+
+rygel (0.17.10-1) experimental; urgency=low
+
+  * Imported Upstream version 0.17.10
+  * Update 0001-Revert-data-Hide-rygel-preferences-in-GNOME.patch to apply.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 22 Mar 2013 11:52:29 +0100
+
+rygel (0.17.9-1) experimental; urgency=low
+
+  * Move librygel* to libs section according to archive overrides
+  * Imported Upstream version 0.17.9
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 07 Mar 2013 17:25:10 +0100
+
+rygel (0.17.8-1) experimental; urgency=low
+
+  * dh_makeshlibs: fix exclude path for rygel 2.0 plugin ABI.
+  * Update package descriptions to be more factually correct.
+    Thanks to to Jens Georg for suggesting the improvements.
+  * Add -Wl,-z,defs -Wl,--as-needed to LDFLAGS
+  * Make -dev packages replace and conflict because of clashing api docs
+    (Closes: #700508)
+  * Imported Upstream version 0.17.8
+  * Add patch to not hide rygel-preferences in GNOME (yet):
+    debian/patches/0001-Revert-data-Hide-rygel-preferences-in-GNOME.patch
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 20 Feb 2013 15:59:08 +0100
+
+rygel (0.17.7-1) experimental; urgency=low
+
+  * Imported Upstream version 0.17.4
+  * Update build-dependencies according to configure.ac
+    - gupnp-vala dropped, gstreamer 1.0, valac 0.18, and more...
+  * Build-depend on libgee-0.8-dev
+  * Build-depend on gstreamer plugins to pass tests
+  * Switch recommends and depends to GStreamer 1.0
+  * make tests non-fatal for now.
+    Upstream confirmed the problems and are working on improving
+    the tests. Avoid killing the build when they fail for now....
+  * Add valac-0.18 as alternative to valac (>= 0.18)
+    - since valac hasn't been updated to vala 0.18 yet.
+  * Bump standards version to 3.9.4 to shut lintian up
+  * Drop leftover debian/rygel-dvb.install
+    - the rygel-dvb package was dropped long time ago
+  * Update install paths for new plugins subdirectory
+  * Install new rygel engines (gst and simple) files
+  * Update triggers for new rygel plugin abi version
+  * Rename packages to match new plugin abi version and soname
+  * Add librygel-renderer-gst-2.0-1 package
+  * Imported Upstream version 0.17.5
+  * Imported Upstream version 0.17.5.1
+  * Fix typo in rygel-1.0-dev package description (Closes: #697989)
+  * Imported Upstream version 0.17.6
+  * Imported Upstream version 0.17.7
+  * Update gupnp-dlna build dependency to >= 0.9.4-2
+  * debian/copyright: update copyright holders and years
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 28 Jan 2013 22:11:21 +0100
+
+rygel (0.16.3-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 10 Dec 2012 10:06:49 +0100
+
+rygel (0.16.3-1) experimental; urgency=low
+
+  * Imported Upstream version 0.16.2
+  * Imported Upstream version 0.16.3
+  * Install librygel-* api documentation in rygel-1.0-dev
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 13 Nov 2012 16:09:04 +0100
+
+rygel (0.16.1-1) experimental; urgency=low
+
+  * Imported Upstream version 0.16.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 12 Oct 2012 13:29:48 +0200
+
+rygel (0.16.0-2) experimental; urgency=low
+
+  * debian/rules: list missing files on installation
+  * Install the gstreamer presets files for transcoding.
+    Thanks to Jens Georg <mail@jensge.org>
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 06 Oct 2012 19:29:52 +0200
+
+rygel (0.16.0-1) experimental; urgency=low
+
+  * Imported Upstream version 0.16.0
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 26 Sep 2012 22:34:15 +0200
+
+rygel (0.15.4-1) experimental; urgency=low
+
+   * Imported Upstream version 0.15.4
+   * Update build dependencies according to configure.ac:
+     - add valadoc (>= 0.2), gtk-doc-tools and
+       libtracker-sparql-0.14-dev (>= 0.14.0)
+     - bump required versions for valac, libgstreamer0.10-dev,
+       libgstreamer-plugins-base0.10-dev and libglib2.0-dev
+   * Drop patch from upstream which was added in previous version.
+   * Add librygel-{core,server,rendere}-1.0-0 packages and install
+     their development files in rygel-1.0-dev.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 24 Sep 2012 09:02:36 +0200
+
+rygel (0.14.3-2) unstable; urgency=low
+
+  * Add patch from upstream fixing choppy playback on some clients
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 13 Sep 2012 11:02:23 +0200
+
+rygel (0.14.3-1) unstable; urgency=low
+
+  * rygel suggests -playbin, and -playbin enhances rygel
+  * Imported Upstream version 0.14.3
+    - this is a bugfix release with 2 fixes:
+      - samsung compatibility
+      - initial indexing of media taking very long time
+  * Revert "Cherry-pick patch from upstream to fix Samsung user agent matching"
+    since it's now included in the release.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 10 Aug 2012 14:15:54 +0200
+
+rygel (0.14.2-3) unstable; urgency=low
+
+  * Cherry-pick patch from upstream to fix Samsung user agent matching.
+    Thanks to Jens Georg (upstream) for recommending this
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 28 Jun 2012 16:16:04 +0200
+
+rygel (0.14.2-2) unstable; urgency=low
+
+  * Install locales.
+    Thanks to Jens Georg, for noticing the missing .mo files
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 22 Jun 2012 02:28:00 +0200
+
+rygel (0.14.2-1) unstable; urgency=low
+
+  * Imported Upstream version 0.14.2
+  * Add libunistring-dev build dependency for faster media-export.
+    Thanks to upstream for the suggestion
+  * Bump to debhelper compat level 9 to enable hardening
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 14 Jun 2012 07:48:49 +0200
+
+rygel (0.14.1-1) unstable; urgency=low
+
+  * Install DLNA compatible icons from new location
+  * Imported Upstream version 0.14.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 02 May 2012 16:13:07 +0200
+
+rygel (0.14.0-1) unstable; urgency=low
+
+  * Imported Upstream version 0.13.3
+  * Add vala build dependencies
+  * Remove vala stamp files to force vala rebuild
+  * Imported Upstream version 0.14.0
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 26 Mar 2012 17:45:13 +0200
+
+rygel (0.12.6-2) unstable; urgency=low
+
+  * Upload to unstable
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 16 Dec 2011 15:21:25 +0100
+
+rygel (0.12.6-1) experimental; urgency=low
+
+  * Imported Upstream version 0.12.6
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 15 Dec 2011 14:49:54 +0100
+
+rygel (0.12.5-1) experimental; urgency=low
+
+  * Imported Upstream version 0.12.5
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 31 Oct 2011 13:29:18 +0100
+
+rygel (0.12.4-1) experimental; urgency=low
+
+  * Suggest tumbler for thumbnail generation
+  * Imported Upstream version 0.12.4
+  * Bump gupnp build dep according to configure.ac
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 09 Oct 2011 19:55:21 +0200
+
+rygel (0.12.3-1) experimental; urgency=low
+
+  * Imported Upstream version 0.12.3
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 04 Oct 2011 16:24:26 +0200
+
+rygel (0.12.2-1) experimental; urgency=low
+
+  * Imported Upstream version 0.12.2
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 20 Sep 2011 21:33:44 +0200
+
+rygel (0.12.1-1) experimental; urgency=low
+
+  * Imported Upstream version 0.12.1
+    - "Fix setting of current playback URI, ..." (Closes: #638006)
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 14 Sep 2011 17:43:54 +0200
+
+rygel (0.12.0-1) experimental; urgency=low
+
+  * Imported Upstream version 0.12.0
+  * debian/watch: switch to tar.xz
+  * debian/rules: drop update-patch-series target
+  * Bump build dependencies according to configure.ac
+    - also drop dbus-glib which is not needed anymore since a while.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 05 Sep 2011 19:02:00 +0200
+
+rygel (0.10.4-1) unstable; urgency=low
+
+  * debian/watch: scan for tar.bz2 since gz is no longer available.
+  * Imported Upstream version 0.10.4
+  * Switch to dpkg-source 3.0 (quilt) format
+  * Bump policy to version 3.9.2
+  * Convert debian/rules to use dh
+  * Bump debhelper compatibility level to 8
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 01 Aug 2011 17:58:02 +0200
+
+rygel (0.10.1-1) unstable; urgency=low
+
+  * Include the mpris plugin in the rygel package
+  * Imported Upstream version 0.10.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 16 Apr 2011 20:36:59 +0200
+
+rygel (0.10.0-1) unstable; urgency=low
+
+  * Imported Upstream version 0.10.0
+  * Update build-deps according to configure.ac
+  * Drop patches, no longer needed
+  * Update install for the tracker plugins new name.
+  * Split out rygel-preferences in separate package
+  * Generate debian/patches/series header to avoid empty file
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 15 Apr 2011 15:39:57 +0200
+
+rygel (0.8.3-3) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 07 Feb 2011 10:59:43 +0100
+
+rygel (0.8.3-2) experimental; urgency=low
+
+  * rename debian/rygel-player.install -> debian/rygel-playbin.install
+    - fixes rygel-playbin package to not be empty. Oops.
+  * Use triggers to detect and perform needed rygel restarts.
+  * Drop redundant call to dh_builddeb
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 16 Nov 2010 14:39:55 +0100
+
+rygel (0.8.3-1) experimental; urgency=low
+
+  * Stop relying on gupnp-dlna pulling in gst-plugins-base.
+  * Imported Upstream version 0.8.3
+  * add rygel.postinst to restart running rygel processes
+  * add rygel.prerm to terminate running rygel processes on removal
+  * Rename rygel-gst-renderer to rygel-playbin, add transition dummy.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 16 Nov 2010 12:01:31 +0100
+
+rygel (0.8.2-1) experimental; urgency=low
+
+  * Imported Upstream version 0.8.2
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 20 Oct 2010 10:01:52 +0200
+
+rygel (0.8.1-1) experimental; urgency=low
+
+  * Imported Upstream version 0.8.1
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 11 Oct 2010 10:30:38 +0200
+
+rygel (0.8.0-1) experimental; urgency=low
+
+  * Imported Upstream version 0.8.0
+    - ... avoid crash in environments where standard XDG folders
+      are undefined or unknown to glib. (Closes: #596902)
+  * rygel-tracker: add NEWS entry about Tracker vs MediaExport backend.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 28 Sep 2010 09:40:39 +0200
+
+rygel (0.7.8-1) experimental; urgency=low
+
+  * Imported Upstream version 0.7.8
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 14 Sep 2010 14:43:51 +0200
+
+rygel (0.7.7-1) experimental; urgency=low
+
+  * Imported Upstream version 0.7.7
+  * drop debian/patches/1000-configure-only-require-gtk-220.patch
+  * install man-pages for rygel(1) and rygel.conf(5).
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 31 Aug 2010 12:12:54 +0200
+
+rygel (0.7.6-1) experimental; urgency=low
+
+  [ Andreas Henriksson ]
+  * Imported Upstream version 0.7.6
+  * debian/control: Bump build-dependencies according to configure.ac
+    + libgupnp-av-1.0-dev (>= 0.5.8) to (>= 0.5.9),
+    + libgupnp-dlna-1.0-dev (>= 0.2.1) to (>= 0.3.0),
+    + libgstreamer0.10-dev (>= 0.10.23) to (>= 0.10.28).
+  * debian/control: Bump policy version to 3.9.1
+  * debian/manpage.xml.ex: drop unused template file.
+
+  [ Jens Georg ]
+  * Add debug package, rygel-dbg.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 23 Aug 2010 14:41:20 +0200
+
+rygel (0.7.3-1) experimental; urgency=low
+
+  * Imported Upstream version 0.7.3
+  * debian/control: update build-dependencies.
+    - add gupnp-dlna (>= 0.2.1)
+    - bump gupnp to >= 0.13.4, gupnp-av to >= 0.5.8,
+      libgee to >= 0.5.2 and gtk+ to >= 2.21.5
+    (gupnp-dlna and the version of Gtk+ is only available for experimental)
+  * gst-renderer plugin has been renamed to playbin.
+    - install the playbin plugin in rygel-gst-renderer package
+      for now until we transition the package name as well.
+    - also mention the new name in rygel-gst-renderer description.
+  * add 1000-configure-only-require-gtk-220.patch and lower gtk+
+    build-dependency.
+    - Gtk+ 2.21.5 isn't really required, patch down to >= 2.20.
+
+  (This round also included the following changes, which was
+   then dropped again because of getting a fix upstream:
+  * Add patches to revert building rygel-preferences against Gtk+ 3.x
+  * Revert "Temporarily disable installing rygel-preferences"
+  * .... upstream 0.7.3 introduces a configure switch ...
+  * drop "revert gtk3/autoreconf" patches.
+  )
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 03 Aug 2010 22:09:42 +0200
+
+rygel (0.7.2-1) experimental; urgency=low
+
+  * Imported Upstream version 0.7.2
+  * update debian/copyright: gstrenderer was re-licensed to LGPLv2+.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 13 Jul 2010 09:38:10 +0200
+
+rygel (0.7.1-1) experimental; urgency=low
+
+  [ Andreas Henriksson ]
+  * Make rygel-tracker depend on tracker >= 0.8
+
+  [ Yann Leboulanger ]
+  * Add rygel-gst-launch plugin
+
+  [ Andreas Henriksson ]
+  * Imported Upstream version 0.7.1
+  * Fix debian/control syntax error for tracker dependency
+  * Temporarily disable installing rygel-preferences
+    (since we don't have gtk+ 2.90.x)
+  * Bump libgupnp-av-1.0-dev dependency to >= 0.5.7
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 26 Jun 2010 23:16:19 +0200
+
+rygel (0.6.0-1) unstable; urgency=low
+
+  * Imported Upstream version 0.6.0
+  * Add build-dependency on intltool
+  * install new rygel icons
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 17 May 2010 20:55:24 +0200
+
+rygel (0.5.2-1) experimental; urgency=low
+
+  * Imported Upstream version 0.5.2
+  * Bump build-dependency versions according to configure.ac
+  * Re-enable rygel-tracker.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 20 Apr 2010 20:18:36 +0200
+
+rygel (0.4.12-2) unstable; urgency=low
+
+  * Disable rygel-tracker for now. (Closes: #577206)
+    (Will likely not be re-enabled until rygel 0.6.x,
+     which supports tracker 0.8, is released.)
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 17 Apr 2010 14:05:31 +0200
+
+rygel (0.4.12-1) unstable; urgency=low
+
+  * Add recommends on gstreamer0.10-ffmpeg for transcoding support.
+  * Imported Upstream version 0.4.12
+  * Drop 0003-Fix-rygel-desktop-file.patch: merged upstream.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 12 Mar 2010 14:03:17 +0100
+
+rygel (0.4.10-2) unstable; urgency=low
+
+  * Bump Standards-Version to 3.8.4
+  * Update patch series
+    (+ 0002-enable-rygel-by-default-in-maemo-config-as-well.patch)
+    + 0003-Fix-rygel-desktop-file.patch
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 20 Feb 2010 09:34:38 +0100
+
+rygel (0.4.10-1) unstable; urgency=low
+
+  * Add recommends on gstreamer plugin sets base and ugly. (Closes: #565284)
+  * Imported Upstream version 0.4.10
+  * Exclude rygel plugins when running dh_makeshlibs
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 25 Jan 2010 23:29:49 +0100
+
+rygel (0.4.8-1) unstable; urgency=low
+
+  * Imported Upstream version 0.4.8
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 01 Jan 2010 23:29:12 +0100
+
+rygel (0.4.6-1) unstable; urgency=low
+
+  * Set rygel-1.0-dev section to devel.
+  * Imported Upstream version 0.4.6
+  * Bump libgupnp-av-1.0-dev build-dependency to >= 0.5.2
+  * Make long description more compact (Closes: #558397)
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 30 Nov 2009 16:01:12 +0100
+
+rygel (0.4.4-1) unstable; urgency=low
+
+  [ Marc-André Lureau ]
+  * New Upstream Version
+  * debian/patches:
+    + removed 0002-VALAC-port-to-libgee-0.5.patch
+  * debian/rules:
+    + touch *_vala.stamp files before build (git doesn't update timestamp)
+
+  [ Andreas Henriksson ]
+  * Update debian/copyright w.r.t. gst-renderer and convert to DEP5
+  * Add rygel-gst-renderer package.
+  * Add tight rygel dependency to plugin packages.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 10 Nov 2009 12:17:16 +0100
+
+rygel (0.4.2-1) unstable; urgency=low
+
+  * New upstream release
+  * update-patch-series:
+    - drop 0002-Fix-desktopdir-definition-to-usr-share-applications.patch,
+      fixed upstream.
+  * Add debian/README.source
+  * Spell gstreamer as GStreamer in package description
+  * debian/control: bump required version of libgee to >= 0.5.0.
+  * update-patch-series: add port to libgee-0.5 patch.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Mon, 05 Oct 2009 10:59:53 +0200
+
+rygel (0.4.1-2) unstable; urgency=low
+
+  * Fix package description, plugin is called "export"
+  * Update package description to closer match upstream
+  * configure with sysconfdir set to /etc
+    - prevents rygel-preferences from crashing when not finding config file.
+  * Install rygel and rygel-preferences desktop files
+  * Add a global autostart symlink for rygel
+  * update-patch-series: add 0002-Fix-desktopdir-definition-to-usr-
+    share-applications.patch
+  * Add Thijs Vermeir to debian/copyright
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 29 Sep 2009 12:09:29 +0200
+
+rygel (0.4.1-1) unstable; urgency=low
+
+  [ Andreas Henriksson ]
+  * New upstream release.
+  * debian/rygel.install:
+    - don't install gconf schemas, they've been dropped.
+    - Install rygel-media-export instead of rygel-media-folder.
+  * debian/control:
+    - Drop rygel-dvb package, dvb-daemon will provide this.
+    - Drop build-dependency on libgconf2-dev.
+    - Bump build-dependencies on gupnp to >= 0.13, gupnp-av to >= 0.5,
+      gstreamer to >= 0.10.23, gee to >= 0.3.0.
+  * debian/rules: update-patch-series: Use xargs -r to cope with null input.
+  * run update-patch-series to drop unused gee patch, not needed anymore.
+  * fix lintian warnings:
+    - out-of-date-standards-version 3.8.1 (current is 3.8.3)
+    - build-depends-on-1-revision build-depends: uuid-dev (>= 1.2-1.41.3-1)
+    - copyright-lists-upstream-authors-with-dh_make-boilerplate
+  * debian/rules:
+    - drop gconf schema related configure flags.
+    - uncomment quilt patch script.
+  * debian/patches/0001-rygel.conf-enabled-by-default.patch:
+    - enable the rygel session service by default.
+  * debian/rygel.install:
+    - install /etc/rygel.conf
+    - install rygel dbus service file.
+  * debian/control: make rygel-tracker recommend tracker
+  * debian/patches/0002-update-forgotten-dbus-paths-to-all-use-Rygel1.patch:
+    - Added, dbus path is org.gnome.Rygel1, some still used of org.gnome.Rygel.
+  * New upstream bugfix release
+  * debian/patches/0002-update-forgotten-dbus-paths-to-all-use-Rygel1.patch:
+    - Dropped, fixed upstream.
+  * debian/control:
+    - Add myself to uploaders and set a team email alias as maintainer address.
+    - Make rygel suggest the packages with tracker and mediathek plugins.
+    - Add libsqlite3-dev to build-dependencies.
+
+  [ Marc-André Lureau ]
+  * Initial packaging.
+  * debian/control:
+    - changed rygel-1.0-dev architecture to "any".
+    - added rygel-1.0-dev dependencies
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 26 Sep 2009 14:04:05 +0200

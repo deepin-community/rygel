@@ -1,0 +1,34 @@
+#! /bin/sh
+set -e
+
+case "$1" in
+	configure)
+		# Disable the job by default for users updating from a buggy version
+		if dpkg --compare-versions "$2" lt-nl 0.38.2-2; then
+			if deb-systemd-helper --user --quiet was-enabled 'rygel.service'; then
+				printf "Disable user unit that shouldn't have been auto enabled\n"
+				deb-systemd-helper --user disable 'rygel.service' >/dev/null || true
+			fi
+		fi
+
+		dpkg-trigger rygel-restart
+		;;
+
+	triggered)
+		# both "/usr/lib/rygel-2.2" and "rygel-restart" triggers
+		# should result in rygel being restarted.
+
+		# make running rygel processes restart themselves.
+		PIDS=$(pidof /usr/bin/rygel || true)
+		if [ "$PIDS" != "" ]; then
+			kill -HUP $PIDS
+			echo "Running rygel instances was told to restart."
+		fi
+	;;
+
+	*)
+	;;
+esac
+
+#DEBHELPER#
+
